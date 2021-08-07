@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js">
+	</script>
+
+	<!-- Firepad -->
+	<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.css" />
+	<script src="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.js">
+	</script>
+
+	<!-- Loader.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.js">
+	</script>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="init()">
+	<div class="nav"> <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="s()">
+    menu
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="find" onclick="e()">
+   cloud
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="download" onclick="save()">
+    file_download
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="Be calm" onclick="chat()">
+    chat
+    </i> 
+	<i class="material-icons mdc-button__icon" aria-hidden="true" title="Beautify" onclick="beatify()">
+		flare
+		</i> 
+	<i class="material-icons mdc-button__icon" aria-hidden="true" title="Help and shortcuts " onclick="w()" style="
+   position: absolute;
+    bottom: 8px;
+    left: 0px;
+">
+    help_center
+    </i> </div>
+
+
+
+
+<div id="firepad"></div>
+
+<div class="toolbar" id="tb">
+  <!-- <i class="material-icons mdc-button__icon" aria-hidden="true" title="dev mode" onclick="open_dev()">developer_mode</i> -->
+
+  <i class="material-icons mdc-button__icon" aria-hidden="true" title="expected input"onclick="open_input()">input</i>
+
+<i class="material-icons mdc-button__icon" aria-hidden="true" title="expected output" onclick="open_out()">
+align_horizontal_right
+</i>
+
+<i class="material-icons mdc-button__icon" aria-hidden="true" title="expected output" onclick="run()" id="run">
+play_arrow
+</i>
+
+</div>
+
+<div class="toolbar" id="cb" style="
+    border-radius: 50%;
+    padding: 10px;
+    right: 10px;
+    bottom: 90%;
+">
+<i class="material-icons mdc-button__icon" aria-hidden="true" title="expected output" onclick="close_dev()" id="prop">
+close
+</i></div>
+
+
+
+<textarea id="output" placeholder="~/output" readonly></textarea>
+<textarea id="expout" placeholder="~/expected-output"></textarea>
+<textarea id="input" placeholder="~/compile-input"></textarea>
+<script src="script.js"></script>
+<script src="libfile.js"></script>
+<script src="ce.js"></script>
+</body>
+</html>
