@@ -39,6 +39,29 @@ bottom: 0;
 margin-bottom: 0;
     float: right!important;
     }
+    .firepad{
+      flex: 1;
+  left:0; top:0;
+     display: flex;
+    max-width: 100% !important;
+    margin:0; padding:0;
+    overflow:hidden;
+bottom: 0;
+margin-bottom: 0;
+    float: right!important;
+    }
+    #excalidraw{
+      flex: 1;
+      display: none;
+  left:0; top:0;
+     /* display: flex; */
+    max-width: 100% !important;
+    margin:0; padding:0;
+    overflow:hidden;
+bottom: 0;
+margin-bottom: 0;
+    float: right!important;
+    }
     #output{
       flex: 1;
       height: 100%;

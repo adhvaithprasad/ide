@@ -83,3 +83,14 @@ function open_input(){
     }
 
 
+function e(){
+  var x = document.getElementById('firepad')
+  var y = document.getElementById('excalidraw')
+  if (y.style.display === "flex") {
+    y.style.display = "none";
+    x.style.display="flex";
+  } else {
+    y.style.display = "flex";
+    x.style.display="none";
+  }
+}
