@@ -10,6 +10,18 @@
         };
         firebase.initializeApp(config);
 
+        
+var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
+var contentEls = document.querySelectorAll('.content');
+
+tabBar.listen('MDCTabBar:activated', function(event) {
+  // Hide currently-active content
+  document.querySelector('.content--active').classList.remove('content--active');
+  // Show content for newly-activated tab
+  contentEls[event.detail.index].classList.add('content--active');
+});
+
+
     function init() {
        
         //// Get Firebase Database reference.
@@ -21,7 +33,7 @@
             window.editor = monaco.editor.create(
                 document.getElementById('firepad'),
                 {
-                    language: 'javascript',
+                    language: 'python',
                     theme:'vs-dark'
                 }
             );
@@ -38,7 +50,7 @@ function save() {
 
     // Helper to get hash from end of URL or generate a random one.
     function getExampleRef() {
-        var ref = firebase.database().ref();
+       var ref = firebase.database().ref();
         var hash = window.location.hash.replace(/#/g, '');
         if (hash) {
             ref = ref.child(hash);
@@ -50,7 +62,9 @@ function save() {
             console.log('Firebase data: ', ref.toString());
         }
         return ref;
+
     }
+
   //   function open_dev(){
   //       var x = document.getElementById("output");
   // if (x.style.display === "block") {
@@ -60,26 +74,31 @@ function save() {
   // }
   //   }
     function close_dev(){
-      var x = document.getElementById("output");
+      var x = document.getElementById("tim");
       x.style.display= "none";
       var y = document.getElementById("cb");
-                 y.style.display="none";
+      y.style.display="none";
+
     }
-function open_input(){
-        var x = document.getElementById("input");
+
+
+    function chat(){
+       var x = document.getElementById("chat");
   if (x.style.display === "block") {
     x.style.display = "none";
   } else {
     x.style.display = "block";
   }
     }
-    function open_out(){
-        var x = document.getElementById("expout");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
+    function c_chat(){
+       var x = document.getElementById("chat");
+       x.style.display="none";
     }
+  function f(){
+    new mdc.dialog.MDCDialog(document.querySelector('.git')).open();
+  
+  }
 
-
+window.onresize = function (){
+    editor.layout();
+};

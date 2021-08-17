@@ -3,10 +3,10 @@
        
 
         function run() {
-                 var x = document.getElementById("output");
+                 var x = document.getElementById("tim");
                  x.style.display="block";
-                 var y = document.getElementById("cb");
-                 y.style.display="block";
+                //  var y = document.getElementById("cb");
+                //  y.style.display="block";
             $("#run").prop("disabled", true);
             $("#output").val("⚙️ Creating submission... suppose you have inputs don't forget to enter it in compile input ");
 
@@ -24,7 +24,7 @@
 	                "x-rapidapi-key": API_KEY
                 },
                 data: JSON.stringify({
-                    "language_id": 63,
+                    "language_id": 70,
                     // language_to_id[$("#lang").val()]
                     "source_code": encode(window.editor.getValue()),
                     "stdin": encode($("#input").val()),
