@@ -551,3 +551,27 @@ align-items: center;
 .h:hover{
   background: rgba(0, 0, 0, 0.548);
 }
+.before-load-wrap{
+  flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.xenial{
+  text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--mdc-theme-primary);
+}
+.xenial-p{
+   color: var(--mdc-theme-primary);
+    font-size: 20px;
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+}
+.loader{
+  flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

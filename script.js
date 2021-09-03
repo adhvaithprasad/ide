@@ -67,7 +67,7 @@ function save() {
         } else {
             ref = ref.push(); // generate unique location.
             window.location = window.location + '#' + ref.key; // add it as a hash to the URL.
-
+// document.getElementById("init").innerHTML=ref.key;
             
         }
         if (typeof console !== 'undefined') {
@@ -125,7 +125,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.display="none";
 }
 
-   let firestore = firebase.firestore();
+let firestore = firebase.firestore();
 let localStream;
 let remoteStream;
 let roomId;
