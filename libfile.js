@@ -13,7 +13,7 @@
 
         function errorHandler(jqXHR, textStatus, errorThrown) {
             $("#output").val(`${JSON.stringify(jqXHR, null, 4)}`);
-            $("#run").prop("disabled", false);
+            document.getElementById("run").innerHTML="Run";
         }
 
         function check(token) {
@@ -33,7 +33,7 @@
                     else {
                         var output = [decode(data["compile_output"]), decode(data["stdout"])].join("\n").trim();
                         $("#output").val(`${data["status"]["id"] != "3" ? "🔴" : "🟢"} ${data["status"]["description"]}\n${output}`);
-                        $("#run").prop("disabled", false);
+                         document.getElementById("run").innerHTML="Run";
                     }
                 },
                 error: errorHandler

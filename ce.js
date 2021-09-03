@@ -3,11 +3,10 @@
        
 
         function run() {
-                 var x = document.getElementById("tim");
-                 x.style.display="block";
+
                 //  var y = document.getElementById("cb");
                 //  y.style.display="block";
-            $("#run").prop("disabled", true);
+            document.getElementById("run").innerHTML="Run <img src='run.gif' style='height:30px'/></img>";
             $("#output").val("⚙️ Creating submission... suppose you have inputs don't forget to enter it in compile input ");
 
             let encodedExpectedOutput = encode($("#expout").val());

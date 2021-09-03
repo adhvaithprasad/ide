@@ -1,85 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
-	<meta charset="utf-8" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<meta charset="utf-8">
+	<title>Xenialbase - a user freindly code editor in the cloud.</title>
+
+	<link rel="stylesheet" href="atyle.css">
+
+
+
+	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js">
+	</script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+	<!-- Remember to include jQuery :) -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js">
+	</script>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js">
 	</script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
 	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js">
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-storage.js">
 	</script>
 	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js">
 	</script>
-<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-	<!-- Firepad -->
-	<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.css" />
-	<script src="https://cdn.firebase.com/libs/firepad/1.5.3/firepad.js">
+  	<script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-firestore.js">
 	</script>
 
-	<!-- Loader.js -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.26.1/min/vs/loader.js">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-css.js">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.js">
 	</script>
 
-	<link rel="stylesheet" href="style.css">
-  <title> hello world</title>
+<!-- Firepad -->
+  <link rel="stylesheet" href="https://firepad.io/releases/v1.5.9/firepad.css" />
+  <script src="https://firepad.io/releases/v1.5.9/firepad.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs/loader.min.js" integrity="sha512-SExj71Cw3B9C9EE8BC/ad3AKia5zQXDj/2SM4THgkeKh5GIFZhKM/R3uclUG8YZwJrjcVhydAlIHmfNvsBCKZA=="
+	 crossorigin="anonymous" referrerpolicy="no-referrer">
+	</script>
+
+
+
 </head>
 
 <body onload="init()">
-
-	<div class="nav"> <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="f()" >
-    menu
-    </i> 
-    <i class="bi bi-github" id="3"></i>
-     <i class="material-icons mdc-button__icon" aria-hidden="true" title="download" onclick="save()">
-    file_download
-    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="Be calm" onclick="chat()" id="1">
-    chat
-    </i> 
-<i class="bi bi-stars"  id="2"></i>
+<p id="init"></p>
+  <div id="before-load">
+    <div style="
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+">
+    <h1 style="
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--mdc-theme-primary);
+"> Xenialbase </h1><p style="
+    color: var(--mdc-theme-primary);
+    font-size: 20px;
+    font-family: 'Roboto';
+    letter-spacing: 1px;
+">Building the future of collabrative code editing</p>
     
-	<i class="material-icons mdc-button__icon" aria-hidden="true" title="Help and shortcuts " onclick="w()">
-    help_center
-    </i> 
-   
-<i class="material-icons mdc-button__icon" aria-hidden="true" title="expected output" onclick="run()" id="run">
-play_arrow
-</i>   
-  
     </div>
 
 
+    <div style="
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+    <div class="slider">
+  <div class="line"></div>
+  <div class="subline inc"></div>
+  <div class="subline dec"></div>
+</div>
+<div>
+  </div></div>
 
+  </div>
 
-
-
-<div id="firepad">
-  <div class="chat" id="chat">
-<header>
-    
-<h1> Chat</h1>
-<i class="material-icons mdc-button__icon" aria-hidden="true" onclick="c_chat()"  >
+  <div id="mySidenav" class="sidenav">
+  <i class="material-icons mdc-button__icon closebtn" aria-hidden="true" onclick="closeNav()">
 close
-</i>
-    </header>
-<div class="main"></div>
-  <footer>
-<div class="text">
-  <input type="text">
-    <i class="material-icons mdc-button__icon" aria-hidden="true">
-    send
-    </i></div>
-  </foot
-  er>
+    </i>
+  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+    settings
+    </i> Settings</a>
+  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+    dns
+    </i>Storage</a>
+  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+download
+    </i>Download</a>
+  <a href="#">
+    <i class="material-icons mdc-button__icon" aria-hidden="true" >
+    chat
+    </i>Chat</a>
+   <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+    flare
+    </i>Beautify</a>
+    <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+    help
+    </i>Help and shortcuts</a>
+    <h2>xenialbase</h2>
 </div>
-</div>
+	<header>
+		<i class="material-icons mdc-button__icon h" aria-hidden="true" title="menu" onclick="openNav()">
+   chevron_right
+    </i>
+		<h2>xenialbase</h2>
+    <div class="btn-grp">
+    <button type="button" class="mdc-button mdc-button--raised run" id="run" onclick="run()">Run</button>
+    <button type="button" class="mdc-button mdc-button--raised run" onclick="share()"><i class="material-icons mdc-button__icon" aria-hidden="true" >
+    link
+    </i>Share</button>
+    </div>
+  </header>
+
+	<main>
+
+		<div class="mdc-dialog chat" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content" id="hick">
+			<div class="mdc-dialog__container">
+				<div class="mdc-dialog__surface">
+					<!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+					<h2 class="mdc-dialog__title" id="my-dialog-title"><!--
+       --><b> Chat </b><!--
+     --></h2>
+					<div class="mdc-dialog__content chat-content" id="my-dialog-content">
+					
+						
+		</div>
+					<footer class="mdc-dialog__actions">
+						<input type="text" id="chat-txt"/>
+						<button type="button" class="mdc-button mdc-button--raised" id="chat-btn">Send</button>
+					</footer>
+				</div>
+			</div>
+			<div class="mdc-dialog__scrim"></div>
+		</div>
 
 
 
 
-<div class="mdc-dialog git" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content" id="hick">
+		
+		<div class="mdc-dialog luck-2" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content" id="hick">
 			<div class="mdc-dialog__container">
 				<div class="mdc-dialog__surface">
 					<!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
@@ -110,20 +187,32 @@ close
 			</div>
 			<div class="mdc-dialog__scrim"></div>
 		</div>
+		
+	
+		<div class="nav"> <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()">
+    menu
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="find" onclick="e()">
+   dns
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="download" onclick="save()">
+    file_download
+    </i> <i class="material-icons mdc-button__icon" aria-hidden="true" title="Be calm" onclick="chat()">
+    chat
+    </i> 
+	<i class="material-icons mdc-button__icon" aria-hidden="true" title="Beautify" onclick="beatify()">
+		flare
+		</i> 
+	<i class="material-icons mdc-button__icon" aria-hidden="true" title="Help and shortcuts " onclick="w()" style="position:absolute;bottom:20px;">
+    help_center
+    </i> </div>
 
-
-
-
-
-
- <div class="svelte4" style="flex:1;" id="tim">
-   <div class="mdc-tab-bar" role="tablist" style="background-color:rgb(34, 34, 34);">
+<div class="svelte4" style="flex:1;">
+   <div class="mdc-tab-bar" role="tablist">
   <div class="mdc-tab-scroller">
     <div class="mdc-tab-scroller__scroll-area">
       <div class="mdc-tab-scroller__scroll-content">
         <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
           <span class="mdc-tab__content">
-            <span class="mdc-tab__text-label">output</span>
+            <span class="mdc-tab__text-label">Editor</span>
           </span>
           <span class="mdc-tab-indicator mdc-tab-indicator--active">
             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -132,7 +221,7 @@ close
         </button>
         <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
           <span class="mdc-tab__content">
-            <span class="mdc-tab__text-label">compile input</span>
+            <span class="mdc-tab__text-label"> output</span>
           </span>
           <span class="mdc-tab-indicator mdc-tab-indicator">
             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
@@ -141,39 +230,88 @@ close
         </button>
         <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
           <span class="mdc-tab__content">
-            <span class="mdc-tab__text-label">expected output</span>
+            <span class="mdc-tab__text-label" >compile input</span>
           </span>
           <span class="mdc-tab-indicator mdc-tab-indicator">
             <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
           </span>
           <span class="mdc-tab__ripple"></span>
         </button>
-        <i class="material-icons mdc-button__icon" aria-hidden="true" onclick="close_dev()" id="prop">
-close
-</i>
+        <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+          <span class="mdc-tab__content">
+            <span class="mdc-tab__text-label">Call</span>
+          </span>
+          <span class="mdc-tab-indicator mdc-tab-indicator">
+            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+          </span>
+          <span class="mdc-tab__ripple"></span>
+        </button>
+         <button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0">
+          <span class="mdc-tab__content">
+            <span class="mdc-tab__text-label">version control</span>
+          </span>
+          <span class="mdc-tab-indicator mdc-tab-indicator">
+            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+          </span>
+          <span class="mdc-tab__ripple"></span>
+        </button>
       </div>
     </div>
   </div>
 
 </div>
 <div class="content content--active">
-<textarea id="output" placeholder="~/output" readonly></textarea>
+ <div id="firepad-container"></div>
+ 
+     <div class="svelte1526">
+<i class="material-icons mdc-button__icon" aria-hidden="true" title="find">
+    search
+    </i>
+    <i class="material-icons mdc-button__icon" aria-hidden="true" title="add">
+    add
+    </i>
 </div>
-<div class="content">
-<textarea id="expout" placeholder="~/expected-output"></textarea>
-</div>
-
-<div class="content">
-<textarea id="input" placeholder="~/compile-input"></textarea>
-</div>  
  </div>
+<div class="content">
+    <textarea readonly id="output"></textarea>
+</div>
+
+<div class="content">
+ <textarea  id="input"></textarea>
+</div>    
+<div class="content">
+<div class="call">
+  <header>
+        <button id="open" type="button" class="mdc-button mdc-button--raised run btn btn-open">Open Microphone and Camera</button>
+        <button id="create" type="button" class="mdc-button mdc-button--raised run btn btn-open"> Create Room</button>
+        <button id="join" type="button" class="mdc-button mdc-button--raised run btn btn-open">Join Room</button>
+        <button id="hangup" type="button" class="mdc-button mdc-button--raised run btn btn-open red">Hang Up</button>
+    </header>
+    <div>
+        <video id="localVideo" autoplay playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+    </div>
+    
+</div>
+
+<div class="content">
   
+ 
+</div>        </div>
 
 
+		<!-- snackbars -->
 
+    <div id="snackbar" ><p id="snackbar-text"></p></div>
+ 
+		
+	</main>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+ <script src="script.js"></script>
 
-<script src="script.js"></script>
-<script src="libfile.js"></script>
-<script src="ce.js"></script>
+ <script src="libfile.js"></script>
+ <script src="ce.js"></script>
 </body>
+
 </html>
