@@ -145,13 +145,13 @@ let createButton = document.getElementById("create");
 let joinButton = document.getElementById("join");
 let hangupButton = document.getElementById("hangup");
 
-createButton.disabled = true;
-joinButton.disabled = true;
-hangupButton.disabled = true;
+
 
 // Reference to the Video Tags
 let localVideo = document.getElementById("localVideo");
 let remoteVideo = document.getElementById("remoteVideo");
+
+
 const openButtonFunc = async () => {
     try {
         localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
@@ -160,10 +160,18 @@ const openButtonFunc = async () => {
         remoteStream = new MediaStream();
         remoteVideo.srcObject = remoteStream;
 
-        openButton.disabled = true;
-        createButton.disabled = false;
-        joinButton.disabled = false;
-        hangupButton.disabled = false;
+                       var hash = window.location.hash.replace(/#/g, '');
+const dbRef = firebase.database().ref();
+dbRef.child(hash).child("room").get().then((snapshot) => {
+  if (snapshot.exists()) {
+    joinButtonFunc().then(console.log("joined room"));
+  } else {
+    createButtonFunc().then(console.log("created"))
+  }
+}).catch((error) => {
+  console.error(error);
+});
+
     } catch (error) {
         console.log(error)
     }
@@ -200,8 +208,13 @@ const createButtonFunc = async () => {
      };
      await roomRef.set(roomWithOffer);
      roomId = roomRef.id;
-     console.log(roomId)
-     alert(roomId);
+
+
+               var hash = window.location.hash.replace(/#/g, '');
+      firebase.database().ref(hash).set({
+room:roomId
+  });
+
      // Code for creating a room above
 
      peerConnection.addEventListener("track", event => {
@@ -246,7 +259,19 @@ const createButtonFunc = async () => {
 
 }
 const joinButtonFunc = async () => {
-    roomId = prompt("Enter a Room Id");
+            var hash = window.location.hash.replace(/#/g, '');
+            const dbRef = firebase.database().ref();
+dbRef.child(hash).child("room").get().then((snapshot) => {
+  if (snapshot.exists()) {
+  roomId=snapshot.val()
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
+
+ 
 
     peerConnection = new RTCPeerConnection(configuration);
 
@@ -337,14 +362,10 @@ const hangupButtonFunc = async () => {
     }
     //Delete a room on hangup above
 
-    openButton.disabled = false;
-    createButton.disabled = true;
-    joinButton.disabled = true;
-    hangupButton.disabled = true;
 
     // document.location.reload(true);
 }
 openButton.addEventListener("click", openButtonFunc);
-createButton.addEventListener("click", createButtonFunc);
-joinButton.addEventListener("click", joinButtonFunc);
+// createButton.addEventListener("click", createButtonFunc);
+// joinButton.addEventListener("click", joinButtonFunc);
 hangupButton.addEventListener("click", hangupButtonFunc);
