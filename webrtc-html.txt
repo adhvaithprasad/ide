@@ -1,0 +1,17 @@
+<div class="call">
+  <header>
+        <button id="open" type="button" class="mdc-button mdc-button--raised run btn btn-open">Open Microphone and Camera</button>
+        <button id="create" type="button" class="mdc-button mdc-button--raised run btn btn-open"> Create Room</button>
+        <button id="join" type="button" class="mdc-button mdc-button--raised run btn btn-open">Join Room</button>
+        <button id="hangup" type="button" class="mdc-button mdc-button--raised run btn btn-open red" style="color:white;">Hang Up</button>
+    </header>
+    <div class="n">
+        <video id="localVideo" autoplay playsinline></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+    </div>
+
+
+
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
