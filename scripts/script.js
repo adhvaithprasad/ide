@@ -9,7 +9,7 @@ var config = {
   measurementId: "G-T12DZ6GPNN"
 };
 firebase.initializeApp(config);
-  var hash = window.location.hash.replace(/#/g, '');
+
 
 
 var tabBar = new mdc.tabBar.MDCTabBar(document.querySelector('.mdc-tab-bar'));
@@ -60,7 +60,7 @@ function save() {
 function getExampleRef() {
   var ref = firebase.database().ref();
 
-  
+    var hash = window.location.hash.replace(/#/g, '');
 
 
 
@@ -85,13 +85,6 @@ function getExampleRef() {
 
 
 }
-
-
-
-
-
-
-
 function close_dev() {
   var x = document.getElementById("tim");
   x.style.display = "none";
@@ -133,36 +126,37 @@ function closeNav() {
 
 const db = firebase.database();
 
-  document.getElementById("chat-btn").addEventListener("click", postChat);
 
  function postChat(e) {
-	e.preventDefault();
+     var hash = window.location.hash.replace(/#/g, '');
+	// e.preventDefault();
 	const timestamp = Date.now();
-	const chatTxt = document.getElementById("chat-txt");
-	const message = chatTxt.value;
+	
+	const message = $("#mjk").val();
    
-	chatTxt.value = "";
-	db.ref(hash+"room/"+ timestamp).set({
-	  usr: username,
-	  msg: message,
-	  room: room,
+
+	db.ref(hash+"/room/"+ timestamp).set({
+
+	  msg: message
+
 	});
   }
 
 
 
-   
-  
-  const fetchChat = db.ref(hash+"messages/");
+
+  setInterval(function(){ 
+
+	var hash = window.location.hash.replace(/#/g, '');
+const fetchChat = db.ref(hash+"/room/");
   fetchChat.on("child_added", function (snapshot) {
 	const messages = snapshot.val();
-	const msg = "<div><p><b>" + messages.usr + "</b></p> " + messages.msg +"</p></div>";
-	document.querySelector('.mnc').innerHTML += msg;
-	console.log('Username:'+messages.usr+' message: '+messages.msg+' room id: '+ messages.id)
+	const msg = "<div><p id='msg2'>"+ messages.msg +"</p></div>";
+
+
+   	document.querySelector('.mnc').innerHTML += msg;
+  
+
   });
 
-
-
-
-
-
+}, 2);//run this thang every 2 seconds
