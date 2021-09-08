@@ -50,7 +50,9 @@
 			<div></div>
 		</div>
 	</div>
-	<div id="mySidenav" class="sidenav"> <i class="material-icons mdc-button__icon closebtn" aria-hidden="true" onclick="closeNav()"> close </i>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > settings </i> Settings</a>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > dns </i>Storage</a>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > download </i>Download</a> 
+	<div id="mySidenav" class="sidenav"> 
+    <i class="material-icons mdc-button__icon closebtn" aria-hidden="true" onclick="closeNav()"> close </i> 
+     <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > settings </i> Settings</a>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > dns </i>Storage</a>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > download </i>Download</a> 
 		<a href="#"> <i class="material-icons mdc-button__icon" aria-hidden="true"> chat </i>Chat</a> <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > flare </i>Beautify</a>  <a href="#"><i class="material-icons mdc-button__icon" aria-hidden="true" > help </i>Help and shortcuts</a>
 		<h2>xenialbase</h2>
 	</div>
@@ -102,41 +104,75 @@
 			</div>
 			<div class="mdc-dialog__scrim"></div>
 		</div>
-		<div class="nav"> <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()"> menu </i>  <i class="material-icons mdc-button__icon" aria-hidden="true" title="find" onclick="e()"> dns </i>  <i class="material-icons mdc-button__icon" aria-hidden="true" title="download" onclick="save()"> file_download </i>  <i class="material-icons mdc-button__icon" aria-hidden="true" title="Beautify" onclick="beatify()"> flare </i>  <i class="material-icons mdc-button__icon" aria-hidden="true" title="Help and shortcuts " onclick="w()" style="position:absolute;bottom:20px;"> help_center </i>
+<div class="many">
+		<div class="nav"> 
+
+
+      <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()"> menu </i>  
+  
+
+      <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()"> dns </i>  
+
+
+      <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()"> file_download </i>  
+
+
+      <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()"> flare </i>  
+
+
+      <i class="material-icons mdc-button__icon" aria-hidden="true" title="menu" onclick="r()" tyle="position:absolute;bottom:20px;"> help_center </i>  
+
+
+
+     
+
 		</div>
-		<div class="svelte4" style="flex:1;">
+
+
+    
+     <div id="firepad-container">
+       <div class="svelte4" style="flex:1;"><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none;" class="cGcvT"></grammarly-extension>
 			<div class="mdc-tab-bar" role="tablist">
 				<div class="mdc-tab-scroller">
-					<div class="mdc-tab-scroller__scroll-area">
+					<div class="mdc-tab-scroller__scroll-area mdc-tab-scroller__scroll-area--scroll" style="margin-bottom: 0px;">
 						<div class="mdc-tab-scroller__scroll-content">
-							<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0"> <span class="mdc-tab__content"> <span class="mdc-tab__text-label">Editor</span> </span> <span class="mdc-tab-indicator mdc-tab-indicator--active"> <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span> </span> <span class="mdc-tab__ripple"></span> 
+							<div class="jkl">
+							<button class="mdc-tab mdc-ripple-upgraded" role="tab" aria-selected="false" tabindex="-1" id="mdc-tab-1" style="--mdc-ripple-fg-size:392px; --mdc-ripple-fg-scale:1.69833; --mdc-ripple-fg-translate-start:293px, -178.5px; --mdc-ripple-fg-translate-end:130.992px, -172px;"> <span class="mdc-tab__content"> <span class="mdc-tab__text-label">Input</span> </span> <span class="mdc-tab-indicator"> <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span> </span> <span class="mdc-tab__ripple"></span> 
 							</button>
-							<button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0"> <span class="mdc-tab__content"> <span class="mdc-tab__text-label"> output</span> </span> <span class="mdc-tab-indicator mdc-tab-indicator"> <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span> </span> <span class="mdc-tab__ripple"></span> 
+							<button class="mdc-tab mdc-ripple-upgraded mdc-tab--active" role="tab" aria-selected="true" tabindex="0" id="mdc-tab-2" style="--mdc-ripple-fg-size:427px; --mdc-ripple-fg-scale:1.69472; --mdc-ripple-fg-translate-start:-9.48438px, -188px; --mdc-ripple-fg-translate-end:142.516px, -189.5px;"> <span class="mdc-tab__content"> <span class="mdc-tab__text-label">compile output</span> </span> <span class="mdc-tab-indicator mdc-tab-indicator--active"> <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline" style=""></span> </span> <span class="mdc-tab__ripple"></span> 
 							</button>
-							<button class="mdc-tab mdc-tab" role="tab" aria-selected="true" tabindex="0"> <span class="mdc-tab__content"> <span class="mdc-tab__text-label" >compile input</span> </span> <span class="mdc-tab-indicator mdc-tab-indicator"> <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span> </span> <span class="mdc-tab__ripple"></span> 
-							</button>
-							
+              </div>
+              <div class="icon-group">
+                 <i class="material-icons mdc-button__icon k t" aria-hidden="true" title="menu" onclick="increase()"> expand_less </i> 
+							 <i class="material-icons mdc-button__icon k j" aria-hidden="true" title="menu" onclick="rm()"> close </i>   </div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="content ">
+				<div class="mzist">
+					<textarea id="input" spellcheck="false"></textarea>
+				</div>
+			</div>
 			<div class="content content--active">
-				<div id="firepad-container"></div>
-				<div class="svelte1526"> <i class="material-icons mdc-button__icon" aria-hidden="true" title="find"> search </i>  <i class="material-icons mdc-button__icon" aria-hidden="true" title="add"> add </i>
-				</div>
-			</div>
-			<div class="content">
 				<div class="mzist">
-					<textarea readonly id="output"></textarea>
-				</div>
-			</div>
-			<div class="content">
-				<div class="mzist">
-					<textarea id="input"></textarea>
+					<textarea readonly="" id="output"></textarea>
 				</div>
 			</div>
 
+
 		</div>
+     </div>
+
+</div>
+
+  
+
+
+
+
+
+
 		<div id="snackbar">
 			<p id="snackbar-text"></p>
 		</div>

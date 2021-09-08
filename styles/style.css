@@ -58,7 +58,12 @@ header h2{
 }
 .monaco-editor .inputarea { position: fixed !important; top: 0 !important; left: 0 !important; }
 .svelte4{
-    height: var(--h-height);
+    height: 50%;
+    width: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
 }
 body{
 	margin:0;
@@ -69,6 +74,7 @@ body{
   }
   main{
 	display:flex;
+  flex-direction: column;
   	margin:0;
   width: 100%;
   height: 100%;
@@ -76,7 +82,7 @@ body{
   max-height: 100%;
   }
   #firepad-container{
-    height: 100%;
+height: var(--h-height);
     width: 100%;
     max-width: 100%;
     max-height: 100% !important;
@@ -144,9 +150,47 @@ color: white;
 }
 .mdc-tab-bar {
     background: #2a2b2e;
+    flex: none;
     /* color: aliceblue; */
 }
+.mdc-tab-scroller__scroll-content{
+  justify-content: space-between;
+}
+.j:hover{
+   transition: 0.70s;
+  -webkit-transition: 0.70s;
+  -moz-transition: 0.70s;
+  -ms-transition: 0.70s;
+  -o-transition: 0.70s;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
 
+}
+.icon-group{
+  margin-right: 100px;
+}
+.icon-group i {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.mdc-tab{
+  flex: none !important;
+}
+.jkl{
+  display: flex;
+}
+.k{
+height: 25px;
+    margin-top: 7px;
+    padding: 5px;
+    background: var(--mdc-theme-primary);
+    border-radius: 50%;
+    right: 10px;
+    color: white;
+}
 .chat{
   justify-content: flex-end !important;
   margin-right: 20px;
@@ -161,26 +205,7 @@ color: white;
 .mdc-dialog__surface{
   margin-right: 30px;
 }
-.svelte1526{
-    display: flex;
-    position: absolute;
-    padding: 8px;
-    color: var(--mdc-theme-primary);
-    bottom: 45px;
-    background: #3a3a3a;
-    border-radius: 8px;
-  
-    left: 50%;
-}
 
-.svelte1526 i{
-margin:4px;
-padding:4px;
-border-radius:50%;
-}
-.svelte1526 i:hover{
-background:#61616188;
-}
 		.chat-content div {
 
 			padding: 10px;
@@ -195,6 +220,9 @@ background:#61616188;
     position: absolute;
     z-index: 1;
     background: #353535d1;
+    }
+    .many{
+      display: flex;
     }
 #snackbar {
   visibility: hidden;

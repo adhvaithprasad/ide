@@ -160,3 +160,20 @@ const fetchChat = db.ref(hash+"/room/");
   });
 
 }, 2);//run this thang every 2 seconds
+
+
+function increase(){
+  var x = document.querySelector(".svelte4");
+  var t = document.querySelector(".t");
+ if (x.style.height === "100%"){
+   x.style.height="50%";
+   t.innerHTML="expand_less"
+ }
+ else{
+x.style.height="100%";
+t.innerHTML="expand_more"
+ }
+}
+function rm(){
+  document.querySelector(".svelte4").style.display="none";
+}

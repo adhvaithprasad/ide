@@ -45,9 +45,9 @@
 
         function run() {
 
-                //  var y = document.getElementById("cb");
-                //  y.style.display="block";
-            document.getElementById("run").innerHTML="Run <img src='run.gif' style='height:30px'/></img>";
+                 var y = document.querySelector(".svelte4");
+                 y.style.display="block";
+            document.getElementById("run").innerHTML="Run <img src='assets/run.gif' style='height:30px'/></img>";
             $("#output").val("⚙️ Creating submission... suppose you have inputs don't forget to enter it in compile input ");
 
             let encodedExpectedOutput = encode($("#expout").val());
